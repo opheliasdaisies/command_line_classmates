@@ -2,7 +2,7 @@ require ("../lib/student")
 
 describe Student, "#name" do
 	it "should return the name of the student" do
-		expect(Student.new("Mary", "@mary","http://mary.blog.com" ).name).to eq("Mary")
+		expect(Student.new("Mary", "@mary","http://mary.blog.com").name).to eq("Mary")
 	end
 end
 
