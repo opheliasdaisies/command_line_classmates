@@ -12,9 +12,7 @@ class Scraper
 	end
 
 	def get_students_names
-		names = html.search("h3").map do |h3|
- 			h3.text
- 		end
+		names = html.search("h3").map { |h3| h3.text }
 	end
 
 	def get_students_twitter
