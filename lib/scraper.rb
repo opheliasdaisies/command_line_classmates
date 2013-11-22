@@ -12,12 +12,17 @@ class Scraper
 	end
 
 	def get_students_names
-		names = html.search("h3").map { |h3| h3.text }
+		html.search("h3").map { |h3| h3.text }
 	end
 
 	def get_students_twitter
-		all_first_children = html.search(".social li:first-child").text
-		split_twitter = all_first_children.strip.split("\n                \n              \n                \n                  \n                  ")
+		html.search(".back").collect do |back_class|
+			if back_class.search(".twitter").text.include?("@")
+				back_class.search(".twitter").text.strip
+			else
+				"none"
+			end
+		end
 	end
 
 	def get_students_blogs
@@ -31,7 +36,3 @@ class Scraper
 	end
 
 end
-
-my_scraper = Scraper.new("http://flatironschool-bk.herokuapp.com")
-puts my_scraper.get_students_blogs.inspect
-#puts my_scraper.get_students_names.inspect
