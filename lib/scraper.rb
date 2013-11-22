@@ -21,9 +21,17 @@ class Scraper
 	end
 
 	def get_students_blogs
-		blog = html.search("a.blog").map do |blog|
-			blog['href']
+		html.search(".back").collect do |back_class|
+			if back_class.search(".blog").text == "Blog"
+				back_class.search(".blog")[0]["href"]
+			else
+				"none"
+			end
 		end
 	end
 
 end
+
+my_scraper = Scraper.new("http://flatironschool-bk.herokuapp.com")
+puts my_scraper.get_students_blogs.inspect
+#puts my_scraper.get_students_names.inspect
