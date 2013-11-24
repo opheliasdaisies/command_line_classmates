@@ -32,6 +32,21 @@ def list_students(students)
 	end
 end
 
+def search_or_rand(students)
+	puts "Do you want to launch a random student's blog or twitter, or do you have someone in mind?"
+	puts "Please respond, \"random\" or \"i'll choose\"."
+	choice = gets.chomp.downcase
+	if choice == "i'll choose"
+		lookup(students)
+	elsif choice == "random"
+		person = students.sample
+		puts "Alright, the lucky student chosen is..... #{person.name}!"
+		person
+	else
+		puts "I don't understand. Please write \"random\" or \"i'll choose\"."
+	end
+end
+
 def lookup(students)
 	puts "Which student would you like to look up? Please give their first and last name."
 	student_name = gets.chomp
@@ -80,8 +95,7 @@ def launch_blog(person)
 	end
 end
 
-
 students = make_students(names, twitters, blogs)
 list_students(students)
-selection = lookup(students)
+selection = search_or_rand(students)
 which_thing(selection)
