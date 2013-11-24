@@ -83,6 +83,11 @@ end
 def launch_twitter(person)
 	if person.twitter == "none"
 		puts "Sorry, #{person.name} does not have a twitter account listed."
+		puts "Would you like to launch their blog?"
+		launch = gets.chomp.downcase
+		if launch == "yes"
+			launch_blog(person)
+		end
 	else
 		twitter_handle = person.twitter[1..person.twitter.length]
 		Launchy.open("http://twitter.com/#{twitter_handle}")
@@ -92,6 +97,11 @@ end
 def launch_blog(person)
 	if person.blog == "none"
 		puts "Sorry, #{person.name} does not have a blog listed."
+		puts "Would you like to launch their twitter?"
+		launch = gets.chomp.downcase
+		if launch == "yes"
+			launch_twitter(person)
+		end
 	else
 		Launchy.open("#{person.blog}")
 	end
