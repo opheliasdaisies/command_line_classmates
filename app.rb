@@ -43,7 +43,8 @@ def search_or_rand(students)
 		puts "Alright, the lucky student chosen is..... #{person.name}!"
 		person
 	else
-		puts "I don't understand. Please write \"random\" or \"i'll choose\"."
+		puts "I don't understand."
+		search_or_rand(students)
 	end
 end
 
@@ -59,6 +60,7 @@ def lookup(students)
 	end
 	if selection.length == 0
 		puts "Sorry, I did not recognize that name."
+		list_students(students)
 		lookup(students)
 	else
 		selection[0]
