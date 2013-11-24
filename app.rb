@@ -54,13 +54,26 @@ def which_thing(person)
 	puts "Would you like to launch #{person.name}'s twitter or blog?"
 	to_launch = gets.chomp.downcase
 	if to_launch == "twitter"
-		#launch twitter
+		launch_twitter(person)
 	elsif to_launch == "blog"
 		#launch blog
 	else
 		puts "I did not understand your response."
 		which_thing(person)
 	end
+end
+
+def launch_twitter(person)
+	if person.twitter == "none"
+		puts "Sorry, #{person.name} does not have a twitter account listed."
+	else
+		twitter_handle = person.twitter[1..person.twitter.length]
+		Launchy.open("http://twitter.com/#{twitter_handle}")
+	end
+end
+
+def launch_blog(person)
+
 end
 
 
