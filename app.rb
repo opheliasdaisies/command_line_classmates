@@ -56,7 +56,7 @@ def which_thing(person)
 	if to_launch == "twitter"
 		launch_twitter(person)
 	elsif to_launch == "blog"
-		#launch blog
+		launch_blog(person)
 	else
 		puts "I did not understand your response."
 		which_thing(person)
@@ -73,7 +73,11 @@ def launch_twitter(person)
 end
 
 def launch_blog(person)
-
+	if person.blog == "none"
+		puts "Sorry, #{person.name} does not have a blog listed."
+	else
+		Launchy.open("#{person.blog}")
+	end
 end
 
 
